@@ -1,0 +1,8 @@
+prefix=/home/mcg1/jw/mdp_ws/devel
+
+Name: seg_pkg
+Description: Description of seg_pkg
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

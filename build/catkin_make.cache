@@ -1,0 +1,2 @@
+seg_pkg
+-DCATKIN_DEVEL_PREFIX=/home/mcg1/jw/mdp_ws/devel -DCMAKE_INSTALL_PREFIX=/home/mcg1/jw/mdp_ws/install -G Unix Makefiles
