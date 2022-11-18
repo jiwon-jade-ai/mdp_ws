@@ -16,10 +16,10 @@ class segmentation:
 
     def __init__(self):
         self.percentage = 0
-        self.MODEL_PATH = "/Unet-diagdataset.pt"
+        self.MODEL_PATH = "Unet-diagdataset.pt"
         self.model = torch.load(self.MODEL_PATH)
         self.image_topic =  "/zed2/zed_node/rgb/image_rect_color"
-        self.image_subscriber = rospy.Subscriber(self.image_topic, Image, self.image_callback)
+        self.image_subscriber = rospy.Subscriber(self.image_topic, Image, self.callback_image)
         self.road_percentage_pub = rospy.Publisher('cv_nav/road_percentage', Float64, queue_size=1)
         self.road_percentage_msg = Float64
 
@@ -33,6 +33,7 @@ class segmentation:
         self.percentage = float(count / np.array(cimage).size * 100)
         self.road_percentage_msg.data = self.percentage
         self.road_percentage_pub.publish(self.road_percentage_msg)
+
 
 def predict_image_mask_miou(model, image, mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]):
     model.eval()

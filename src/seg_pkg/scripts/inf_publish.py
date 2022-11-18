@@ -17,7 +17,7 @@ bridge = CvBridge()
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # load model
-MODEL_PATH = "/home/mcg1/jw/mdp_ws/Unet-diagdataset.pt"
+MODEL_PATH = "Unet-diagdataset.pt"
 model = torch.load(MODEL_PATH)
 model.eval()
 percentage = 0.0
