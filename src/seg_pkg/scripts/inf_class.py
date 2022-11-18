@@ -17,7 +17,6 @@ percentage = 0
 MODEL_PATH = "Unet-diagdataset.pt"
 model = torch.load(MODEL_PATH)
 image_topic =  "/zed2/zed_node/rgb/image_rect_color"
-image_subscriber = rospy.Subscriber(image_topic, Image, callback_image)
 road_percentage_pub = rospy.Publisher('cv_nav/road_percentage', Float64, queue_size=1)
 road_percentage_msg = Float64
 
@@ -53,7 +52,8 @@ def predict_image_mask_miou(model, image, mean=[0.485, 0.456, 0.406], std=[0.229
 
 if __name__ == '__main__':
     rospy.init_node('segmenation_node')
-
+    global image_topic
+    image_subscriber = rospy.Subscriber(image_topic, Image, callback_image)
     rospy.spin()
 
 
